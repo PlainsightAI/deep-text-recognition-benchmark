@@ -6,6 +6,13 @@ Using this framework allows for the module-wise contributions to performance in 
 Such analyses clean up the hindrance on the current comparisons to understand the performance gain of the existing modules. <br><br>
 <img src="./figures/trade-off.png" width="1000" title="trade-off">
 
+## Training using a Sense dataset
+1. Create a new python environment and install the requirements in requirements.txt (Tested using Python 3.10)
+2. Obtain a Sense dataset that is annotated for "text" and note the full path to it. This should be a zipfile.
+3. Call e2e.sh with the path to the dataset. `./e2e.sh /home/plainsight/sense_dataset.zip`
+4. This will output a folder inside the `dataset` directory with the name of the zipfile containing the lmdb datasets.
+
+
 ## Honors
 Based on this framework, we recorded the 1st place of [ICDAR2013 focused scene text](https://rrc.cvc.uab.es/?ch=2&com=evaluation&task=3), [ICDAR2019 ArT](https://rrc.cvc.uab.es/files/ICDAR2019-ArT.pdf) and 3rd place of [ICDAR2017 COCO-Text](https://rrc.cvc.uab.es/?ch=5&com=evaluation&task=2), [ICDAR2019 ReCTS (task1)](https://rrc.cvc.uab.es/files/ICDAR2019-ReCTS.pdf). <br>
 The difference between our paper and ICDAR challenge is summarized [here](https://github.com/clovaai/deep-text-recognition-benchmark/issues/13).
