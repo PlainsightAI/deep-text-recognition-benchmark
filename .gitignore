@@ -5,7 +5,6 @@
 *.mdb
 *.pth
 *.tar
-*.txt
 *.ipynb
 *.zip
 *.eps
@@ -205,3 +204,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+dataset
