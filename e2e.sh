@@ -20,7 +20,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Call the second Python script with the derived paths
-python3 create_lmdb_dataset.py --inputPath "$SENSE_CONVERTED" --gtFile "$SENSE_CONVERTED/gt.txt" --outputPath result/
+# Repeat this step for the validation as well
+python3 create_lmdb_dataset.py --inputPath "$SENSE_CONVERTED" --gtFile "$SENSE_CONVERTED/gt.txt" --outputPath "$SENSE_CONVERTED"/training/train
 
 # Check if the second script ran successfully
 if [ $? -ne 0 ]; then
