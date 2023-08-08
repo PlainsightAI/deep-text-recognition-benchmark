@@ -22,16 +22,18 @@ def main(dataset_path, output_dir):
                     gt = label['annotations']['Tattoo']['data']
                     gt = gt.strip().upper().replace(' ', '').replace('5', 'X').replace('Z', '2')
 
-                    if len(gt) < 4 or len(gt) > 4: continue
+                    if len(gt) < 4 or len(gt) > 4:
+                        print(gt)
+                        continue
 
                     image_path = label['path']
                     output_image_path = os.path.join(output_dir, split, os.path.basename(image_path))
+                    build_ground_truth_string(os.path.join(split, os.path.basename(image_path)), gt, buf)
                     with open(output_image_path, 'wb') as fp:
                         fp.write(zf.open(image_path).read())
                 except:
                     continue
 
-                build_ground_truth_string(os.path.join(split, os.path.basename(image_path)), gt, buf)
     
             with open(os.path.join(output_dir, f'{split}.txt'), 'w') as fp:
                 fp.write(buf.getvalue())

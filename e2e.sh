@@ -31,5 +31,5 @@ if [ $? -ne 0 ]; then
     exit 3
 fi
 
-CUDA_VISIBLE_DEVICES=0 python3 train.py --train_data "$SENSE_CONVERTED/training/train" --valid_data "$SENSE_CONVERTED/training/validation" --select_data MJ-ST --Transformation None --FeatureExtraction VGG --SequenceModeling BiLSTM --Prediction CTC --data_filtering_off --select_data train --batch_ratio 1
+CUDA_VISIBLE_DEVICES=0 python3 train.py --train_data "$SENSE_CONVERTED/training/train" --valid_data "$SENSE_CONVERTED/training/validation" --select_data MJ-ST --Transformation None --FeatureExtraction VGG --SequenceModeling BiLSTM --Prediction CTC --data_filtering_off --select_data train --batch_ratio 1 --character 0123456789X
 
