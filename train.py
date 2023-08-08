@@ -246,10 +246,10 @@ if __name__ == '__main__':
     parser.add_argument('--grad_clip', type=float, default=5, help='gradient clipping value. default=5')
     parser.add_argument('--baiduCTC', action='store_true', help='for data_filtering_off mode')
     """ Data processing """
-    parser.add_argument('--select_data', type=str, default='MJ-ST',
-                        help='select training data (default is MJ-ST, which means MJ and ST used as training data)')
-    parser.add_argument('--batch_ratio', type=str, default='0.5-0.5',
-                        help='assign ratio for each selected data in the batch')
+    parser.add_argument('--select_data', type=str, default='/', 
+                     help='select training data (default is MJ-ST, which means MJ and ST used as training data)') 
+    parser.add_argument('--batch_ratio', type=str, default='1', 
+                     help='assign ratio for each selected data in the batch') 
     parser.add_argument('--total_data_usage_ratio', type=str, default='1.0',
                         help='total data usage ratio, this ratio is multiplied to total number of data.')
     parser.add_argument('--batch_max_length', type=int, default=25, help='maximum-label-length')
@@ -282,11 +282,6 @@ if __name__ == '__main__':
         # print(opt.exp_name)
 
     os.makedirs(f'./saved_models/{opt.exp_name}', exist_ok=True)
-
-    """ vocab / character number configuration """
-    if opt.sensitive:
-        # opt.character += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        opt.character = string.printable[:-6]  # same with ASTER setting (use 94 char).
 
     """ Seed and GPU setting """
     # print("Random Seed: ", opt.manualSeed)
