@@ -19,11 +19,10 @@ def main(dataset_path, output_dir):
             labels = json.load(zf.open(file))['labels']
             for label in labels:
                 try:
-                    gt_text = label['annotations']['Tattoo']['data']
-                    gt_text = gt_text.upper()
-                    gt_text = gt_text.replace(' ', '')
-                    gt_text = gt_text.replace('5', 'X')
-                    if len(gt_text) < 4 or len(gt_text) > 4: continue
+                    gt = label['annotations']['Tattoo']['data']
+                    gt = gt.strip().upper().replace(' ', '').replace('5', 'X').replace('Z', '2')
+
+                    if len(gt) < 4 or len(gt) > 4: continue
 
                     image_path = label['path']
                     output_image_path = os.path.join(output_dir, split, os.path.basename(image_path))
@@ -32,7 +31,7 @@ def main(dataset_path, output_dir):
                 except:
                     continue
 
-                build_ground_truth_string(os.path.join(split, os.path.basename(image_path)), gt_text, buf)
+                build_ground_truth_string(os.path.join(split, os.path.basename(image_path)), gt, buf)
     
             with open(os.path.join(output_dir, f'{split}.txt'), 'w') as fp:
                 fp.write(buf.getvalue())
