@@ -34,12 +34,13 @@ fi
 CUDA_VISIBLE_DEVICES=0 python3 train.py \
     --train_data "$SENSE_CONVERTED/training/train" \
     --valid_data "$SENSE_CONVERTED/training/validation" \
-    --Transformation None \
+    --Transformation TPS \
     --FeatureExtraction VGG \
     --SequenceModeling BiLSTM \
     --Prediction CTC \
     --data_filtering_off \
     --select_data train \
     --batch_ratio 1 \
-    --character 0123456789X
+    --character 0123456789X \
+    --batch_max_length 4 
 
