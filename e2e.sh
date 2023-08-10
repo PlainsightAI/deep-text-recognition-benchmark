@@ -42,5 +42,6 @@ CUDA_VISIBLE_DEVICES=0 python3 train.py \
     --select_data train \
     --batch_ratio 1 \
     --character 0123456789X \
-    --batch_max_length 4 
+    --batch_max_length 4 \
+    --num_iter 10000
 
