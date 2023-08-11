@@ -1,0 +1,12 @@
+network_params:
+  input_channel: 
+  output_channel: 
+  hidden_size: 
+  image_height: 
+  image_width:
+  num_fiducial: 
+  num_class:
+imgH:
+lang_list:
+         - 'en'
+character_list: 
