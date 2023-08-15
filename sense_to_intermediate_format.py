@@ -26,7 +26,6 @@ def main(dataset_path, output_dir):
                 gt = gt.strip().upper().replace(" ", "").replace("5", "X").replace("Z", "2")
 
                 if len(gt) < 4 or len(gt) > 4:
-                    print(gt)
                     continue
 
                 image_path = label["path"]

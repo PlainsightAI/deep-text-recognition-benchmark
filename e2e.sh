@@ -31,17 +31,25 @@ if [ $? -ne 0 ]; then
     exit 3
 fi
 
+
+current_datetime=$(date +"%Y-%m-%d-%H:%M:%S")
 CUDA_VISIBLE_DEVICES=0 python3 train.py \
+    --exp_name $current_datetime \
     --train_data "$SENSE_CONVERTED/training/train" \
-    --valid_data "$SENSE_CONVERTED/training/validation" \
+    --valid_data "$SENSE_CONVERTED/training/test" \
     --Transformation TPS \
-    --FeatureExtraction VGG \
+    --FeatureExtraction ResNet \
     --SequenceModeling BiLSTM \
     --Prediction CTC \
     --data_filtering_off \
     --select_data train \
     --batch_ratio 1 \
-    --character 0123456789X \
     --batch_max_length 4 \
-    --num_iter 10000
+    --num_iter 100000 \
+    --batch_size 64 \
+    --Prediction Attn \
+    --character 0123456789X \
+    --SequenceModeling None 
+    # --FT \
+    # --saved_model ./TPS-ResNet-BiLSTM-Attn.pth \
 
